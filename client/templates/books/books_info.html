@@ -1,0 +1,13 @@
+<template name="bookInfo">
+  <div class="post">
+    <div class="post-content">
+	  <h3><a href="{{addr}}">{{title}}</a><span>고유번호: {{idnum}} </span>
+		{{#if checked}}
+			<span style="float:right;" class="label label-danger">{{status}}</span>
+		{{else}}
+			<span class="label label-success" style="float:right;">{{status}}</span>
+		{{/if}}
+	</h3>
+	</div>
+  </div>
+</template>
