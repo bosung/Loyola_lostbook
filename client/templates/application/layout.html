@@ -1,0 +1,38 @@
+<template name="layout">
+<body>
+	<div class="container">
+		<header class="navbar navbar-default" role="navigation">
+			<div class="navbar-heade">
+			<a class="navbar-brand" href="{{pathFor 'bookList'}}">로욜라도서관 서가관리실 책찾기팀</a>
+			<a class="navbar-brand"> | </a>
+			<a class="navbar-brand" href="http://club.cyworld.com/clubV1/Home.cy/50659865">클럽홈페이지</a>
+			</div>
+
+		<div class="collapse navbar-collapse" id="navigation">
+		  <ul class="nav navbar-nav navbar-right">
+		    {{> loginButtons}}
+		  </ul>
+		</div>
+			
+		</header>
+
+	<div id="notice" class="row-fluid">
+		{{> noticeList}}
+	</div>
+
+<div id="main" class="row-fluid">
+  {{> yield}}
+</div>
+
+<div class="post">
+<div class="post-content">
+	<h3 id="output">
+	<script>
+	document.getElementById("output").innerHTML="대출중인 책 "+checkedBookNum+"권";
+	</script></h3>
+</div>
+</div>
+
+	</div>
+</body>
+</template>
