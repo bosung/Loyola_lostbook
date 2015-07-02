@@ -9,11 +9,16 @@
 	  </div>
 
 		{{#if newNotice}}
+			
+			<form class="main form">
 			<div class="panel-body">
-			<input type="text" class="form-control" id="add-notice" value="">
-			<button id="btnSubmit" type="submit" class="btn btn-default" style="float:right;">저장</button>
+
+			<input name="add-notice" id="add-notice" type="text" class="form-control" value="">
+			<input name="btnSubmit" type="submit" value="저장" class="btn btn-default" style="float:right;"/>
 			<button id="btnCancel" type="submit" class="btn btn-default" style="float:right;">취소</button>
+
 			</div>
+			</form>
 		{{/if}}
 
 	  {{#each notices}}

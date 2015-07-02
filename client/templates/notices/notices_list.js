@@ -17,10 +17,14 @@ Template.noticeList.events({
 		//(t.find("#add-notice")).focus();
 		//(t.find("#add-notice")).select();
 	},
-	'click #btnSubmit': function(e,t){
-		var con = String(e.target.value || "");
+	'submit form': function(e) {
+		e.preventDefault();
+		
+		var d = new Date();
+		var date = d.toDateString();
+		var con = $(e.target).find('[name=add-notice]').val();
 		if( con ){
-			Notices.insert({"contents":con});
+			Notices.insert({"date":date ,"writer":Meteor.user().username, "contents":con});
 			Session.set('addNotice',false);
 		}
 	},
