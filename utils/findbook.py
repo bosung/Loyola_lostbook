@@ -32,7 +32,7 @@ conn.close()
 i=1
 bookout = []
 list = []
-while i<=1:
+while i<=3:
 	conn = httplib.HTTPConnection("library.sogang.ac.kr")
 	try:
 		conn.request("GET", "/missrepo/list?pn="+str(1)+"&ss=0002",None, dict(headers))
@@ -61,12 +61,12 @@ while i<=1:
 # idnum: 고유번호
 # idnum is string ex. 000000114434
 
-fjs=open("../lib/collections/zaddBooks.js","w")
-fjs.write("data = [")
+fjs=open("../lib/collections/updateBooks.json","w")
+fjs.write("{ \"data\" : [\n")
 
 def writeJSON(addr, idnum, title, status):
-	jsobj = {"addr": "library.sogang.ac.kr"+addr, "idnum": idnum, "title": title, "status": status}
-	fjs.write(json.dumps(jsobj, ensure_ascii=False)+", ")
+	jsobj = {"addr": "http://library.sogang.ac.kr"+addr, "idnum": idnum, "title": title, "status": status}
+	fjs.write(json.dumps(jsobj, ensure_ascii=False)+",\n")
 
 def searchidNum(num, addr, idnum, title):
 
@@ -110,7 +110,5 @@ for i in range(len(list)):
 		title = detail[p7+2:p8]
 		searchidNum(num, addr, idnum, title)
 
-fjs.write('{"status":"last"} ];\n')
-jscode=" checkedBookNum = " + str(len(bookout)) + "\nfor(var i in data){\nif( data[i].status == \"last\" ) break;\nif(data[i].status == \"대출가능\") { data[i].checked=false; } else { data[i].checked = true; checkedBookNum++; } Books.update(data[i],{$set:{\"status\":data[i],status}},{upsert:true}); }"
-fjs.write(jscode)
+fjs.write('{"status":"last"} ]}\n')
 fjs.close()

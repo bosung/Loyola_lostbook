@@ -1,8 +1,13 @@
 Template.bookInfo.helpers({
-  domain: function() {
-    var a = document.createElement('a');
-	a.href = this.addr;
-	return a.hostname;
-  }
+	addr: function(){
+		//console.log(this.addr);
+		return this.addr;
+	},
+	idnum: function(){
+		return this.idnum;
+	},
+	title: function(){
+		return this.title;
+	}
 });
 
